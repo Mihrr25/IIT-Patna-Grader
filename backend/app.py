@@ -27,4 +27,4 @@ def upload_file():
     return send_file(output, download_name="graded_workbook.xlsx", as_attachment=True, mimetype="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
 
 if __name__ == "__main__":
-    app.run(debug=True, port=5000)
+    app.run()
