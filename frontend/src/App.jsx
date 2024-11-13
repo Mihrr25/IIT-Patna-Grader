@@ -54,7 +54,7 @@ function FileUploadForm() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-blue-100 to-purple-200">
+    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-blue-100 to-purple-200 min-w-screen">
       <form
         className="p-8 bg-white shadow-lg rounded-lg w-full max-w-lg"
         onSubmit={handleSubmit}
