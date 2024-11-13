@@ -54,43 +54,51 @@ function FileUploadForm() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-blue-100 to-purple-200">
       <form
-        className="p-6 bg-white shadow-md rounded-md space-y-4 w-full max-w-md"
+        className="p-8 bg-white shadow-lg rounded-lg w-full max-w-lg"
         onSubmit={handleSubmit}
       >
-        <h1 className="text-xl font-bold text-gray-800">Upload Excel File</h1>
+        <h1 className="text-2xl font-bold text-center text-gray-800 mb-6">
+          Upload Excel File
+        </h1>
 
+        {/* Drag and Drop Section */}
         <div
           {...getRootProps()}
-          className="border-2 border-dashed border-gray-300 p-4 rounded-md text-center cursor-pointer bg-gray-50"
+          className="border-2 border-dashed border-blue-500 bg-blue-50 p-6 rounded-lg text-center cursor-pointer hover:bg-blue-100 transition-all"
         >
           <input {...getInputProps()} />
-          <p className="text-gray-500">Drag & drop your Excel file here, or click to browse</p>
+          <p className="text-gray-600 font-medium">
+            Drag & drop your Excel file here, or click to browse
+          </p>
         </div>
 
-        <div className="mt-4">
+        {/* File Input Section */}
+        <div className="mt-6">
           <input
             type="file"
             name="file"
             accept=".xlsx, .xls"
             onChange={handleFileChange}
-            className="block w-full text-sm text-gray-900 bg-gray-50 border border-gray-300 rounded-lg cursor-pointer focus:outline-none"
+            className="block w-full text-sm text-gray-600 bg-gray-50 border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
           />
         </div>
 
+        {/* Submit Button */}
         <button
           type="submit"
-          className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700"
+          className="w-full mt-6 bg-blue-600 text-white py-3 px-4 rounded-lg font-semibold shadow-lg hover:bg-blue-700 transition-all"
         >
           Upload File
         </button>
 
+        {/* Download Link */}
         {downloadLink && (
           <a
             href={downloadLink}
             download="processed_file.xlsx"
-            className="text-blue-600 hover:underline mt-4 block"
+            className="block text-center mt-6 text-blue-600 hover:underline font-medium"
           >
             Download Processed File
           </a>
