@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDropzone } from "react-dropzone";
+import './index.css';
 
 function App() {
   const [file, setFile] = useState(null);
