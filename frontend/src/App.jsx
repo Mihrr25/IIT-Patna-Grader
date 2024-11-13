@@ -26,6 +26,7 @@ function App() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setDownloadLink('');
     if (!file) {
       alert("Please upload a file before submitting!");
       return;
