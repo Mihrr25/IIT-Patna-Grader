@@ -89,7 +89,7 @@ function App() {
 
         {/* Submit Button */}
         <button type="submit" className="submit-button">
-          Upload File
+          Submit
         </button>
 
         {/* Download Link */}
