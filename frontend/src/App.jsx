@@ -30,14 +30,14 @@ function App() {
 
     try {
       const response = await fetch(
-        "https://renderiitpgraderproject.onrender.com/upload",
+        "http://127.0.0.1:5000/upload",
         {
           method: "POST",
           body: formdata,
         }
       );
 
-      if (response.status !== 400) {
+      if (response.status === 404) {
         alert("Something is wrong with the Excel file. Please check and try again.");
       } else {
         const blob = await response.blob();

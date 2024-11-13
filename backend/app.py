@@ -9,17 +9,18 @@ CORS(app)
 @app.route("/upload", methods=["POST"])
 def upload_file():
     file = request.files["file"]
-    # print("hefllo")
-    # print(file)
+    print("hefllo")
+    print(file)
 
     if not (file.filename.endswith(".xls") or file.filename.endswith(".xlsx")):
         return {"error": "Invalid file type"}, 400
+    # print("hefllo")
 
     workbook = op.load_workbook(file)
     workbook2=grader(workbook)
 
     if workbook2 is None:
-        return jsonify({"error": "Total weightage is not 100"}), 400
+        return jsonify({"error": "Total weightage is not 100"}), 404
     output = BytesIO()
     workbook2.save(output)
     output.seek(0)
