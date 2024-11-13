@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDropzone } from "react-dropzone";
 
-function FileUploadForm() {
+function App() {
   const [file, setFile] = useState(null);
   const [downloadLink, setDownloadLink] = useState(null);
 
@@ -16,10 +16,6 @@ function FileUploadForm() {
     multiple: false,
     accept: ".xlsx, .xls",
   });
-
-  const handleFileChange = (e) => {
-    setFile(e.target.files[0]);
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -54,7 +50,7 @@ function FileUploadForm() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-blue-100 to-purple-200 min-w-screen">
+    <div className="flex items-center justify-center min-h-screen min-w-full bg-gradient-to-br from-blue-100 to-purple-200">
       <form
         className="p-8 bg-white shadow-lg rounded-lg w-full max-w-lg"
         onSubmit={handleSubmit}
@@ -63,26 +59,25 @@ function FileUploadForm() {
           Upload Excel File
         </h1>
 
-        {/* Drag and Drop Section */}
+        {/* Dropzone */}
         <div
           {...getRootProps()}
           className="border-2 border-dashed border-blue-500 bg-blue-50 p-6 rounded-lg text-center cursor-pointer hover:bg-blue-100 transition-all"
         >
           <input {...getInputProps()} />
-          <p className="text-gray-600 font-medium">
-            Drag & drop your Excel file here, or click to browse
+          <p className="text-gray-600 font-medium mb-4">
+            Drag & drop your Excel file here
           </p>
-        </div>
-
-        {/* File Input Section */}
-        <div className="mt-6">
-          <input
-            type="file"
-            name="file"
-            accept=".xlsx, .xls"
-            onChange={handleFileChange}
-            className="block w-full text-sm text-gray-600 bg-gray-50 border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-          />
+          <label className="inline-block bg-blue-600 text-white px-4 py-2 rounded-md cursor-pointer hover:bg-blue-700 transition-all">
+            Choose File
+            <input
+              type="file"
+              name="file"
+              accept=".xlsx, .xls"
+              onChange={(e) => setFile(e.target.files[0])}
+              className="hidden"
+            />
+          </label>
         </div>
 
         {/* Submit Button */}
@@ -108,4 +103,4 @@ function FileUploadForm() {
   );
 }
 
-export default FileUploadForm;
+export default App;
