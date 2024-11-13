@@ -13,7 +13,7 @@ def upload_file():
     print(file)
 
     if not (file.filename.endswith(".xls") or file.filename.endswith(".xlsx")):
-        return {"error": "Invalid file type"}, 400
+        return {"error": "Invalid file type"}, 404
     # print("hefllo")
 
     workbook = op.load_workbook(file)
@@ -24,7 +24,7 @@ def upload_file():
     output = BytesIO()
     workbook2.save(output)
     output.seek(0)
-    print("HELLO",output)
+    # print("HELLO",output)
     return send_file(output, download_name="graded_workbook.xlsx", as_attachment=True, mimetype="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
 
 if __name__ == "__main__":

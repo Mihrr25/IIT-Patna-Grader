@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDropzone } from "react-dropzone";
-import "./index.css"; // Import the CSS file
+import "./index.css";
 
 function App() {
   const [file, setFile] = useState(null);
@@ -16,7 +16,13 @@ function App() {
     onDrop,
     multiple: false,
     accept: ".xlsx, .xls",
+    noClick: true, // Prevent dropzone from automatically triggering file browsing
   });
+
+  const handleDropzoneClick = (e) => {
+    e.stopPropagation(); // Prevent multiple triggers
+    document.querySelector(".hidden-input").click(); // Programmatically open the file picker
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -30,14 +36,14 @@ function App() {
 
     try {
       const response = await fetch(
-        "http://127.0.0.1:5000/upload",
+        "https://renderiitpgraderproject.onrender.com/upload",
         {
           method: "POST",
           body: formdata,
         }
       );
 
-      if (response.status === 404) {
+      if (response.status == 404) {
         alert("Something is wrong with the Excel file. Please check and try again.");
       } else {
         const blob = await response.blob();
@@ -59,19 +65,26 @@ function App() {
         <div
           {...getRootProps()}
           className="dropzone"
+          onClick={handleDropzoneClick} // Programmatically trigger file input
         >
-          <input {...getInputProps()} />
-          <p>Drag & drop your Excel file here, or</p>
-          <label className="file-button">
-            Choose File
-            <input
-              type="file"
-              name="file"
-              accept=".xlsx, .xls"
-              onChange={(e) => setFile(e.target.files[0])}
-              className="hidden-input"
-            />
-          </label>
+          <input {...getInputProps()} className="hidden-input" />
+          {file ? (
+            <p className="file-name">{file.name}</p>
+          ) : (
+            <>
+              <p>Drag & drop your Excel file here, or</p>
+              <label className="file-button">
+                Choose File
+                {/* <input
+                  type="file"
+                  name="file"
+                  accept=".xlsx, .xls"
+                  onChange={(e) => setFile(e.target.files[0])}
+                  className="hidden-input"
+                /> */}
+              </label>
+            </>
+          )}
         </div>
 
         {/* Submit Button */}
