@@ -1,3 +1,94 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Center the form container */
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(to bottom right, #e3f2fd, #f3e5f5);
+  padding: 20px;
+}
+
+/* Style the form */
+.upload-form {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+/* Form title */
+.form-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Dropzone styling */
+.dropzone {
+  border: 2px dashed #2196f3;
+  border-radius: 8px;
+  padding: 20px;
+  background-color: #e3f2fd;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.dropzone:hover {
+  background-color: #bbdefb;
+}
+
+/* File button inside dropzone */
+.file-button {
+  display: inline-block;
+  background-color: #2196f3;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.file-button:hover {
+  background-color: #1976d2;
+}
+
+/* Hide the actual input */
+.hidden-input {
+  display: none;
+}
+
+/* Submit button */
+.submit-button {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  background-color: #4caf50;
+  color: white;
+  font-size: 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+  background-color: #388e3c;
+}
+
+/* Download link */
+.download-link {
+  display: block;
+  margin-top: 20px;
+  color: #1e88e5;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.download-link:hover {
+  text-decoration: underline;
+}

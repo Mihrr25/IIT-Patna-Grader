@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDropzone } from "react-dropzone";
-import './index.css';
+import "./index.css"; // Import the CSS file
 
 function App() {
   const [file, setFile] = useState(null);
@@ -51,41 +51,31 @@ function App() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen min-w-full bg-gradient-to-br from-blue-100 to-purple-200">
-      <form
-        className="p-8 bg-white shadow-lg rounded-lg w-full max-w-lg"
-        onSubmit={handleSubmit}
-      >
-        <h1 className="text-2xl font-bold text-center text-gray-800 mb-6">
-          Upload Excel File
-        </h1>
+    <div className="form-container">
+      <form className="upload-form" onSubmit={handleSubmit}>
+        <h1 className="form-title">Upload Excel File</h1>
 
         {/* Dropzone */}
         <div
           {...getRootProps()}
-          className="border-2 border-dashed border-blue-500 bg-blue-50 p-6 rounded-lg text-center cursor-pointer hover:bg-blue-100 transition-all"
+          className="dropzone"
         >
           <input {...getInputProps()} />
-          <p className="text-gray-600 font-medium mb-4">
-            Drag & drop your Excel file here
-          </p>
-          <label className="inline-block bg-blue-600 text-white px-4 py-2 rounded-md cursor-pointer hover:bg-blue-700 transition-all">
+          <p>Drag & drop your Excel file here, or</p>
+          <label className="file-button">
             Choose File
             <input
               type="file"
               name="file"
               accept=".xlsx, .xls"
               onChange={(e) => setFile(e.target.files[0])}
-              className="hidden"
+              className="hidden-input"
             />
           </label>
         </div>
 
         {/* Submit Button */}
-        <button
-          type="submit"
-          className="w-full mt-6 bg-blue-600 text-white py-3 px-4 rounded-lg font-semibold shadow-lg hover:bg-blue-700 transition-all"
-        >
+        <button type="submit" className="submit-button">
           Upload File
         </button>
 
@@ -94,7 +84,7 @@ function App() {
           <a
             href={downloadLink}
             download="processed_file.xlsx"
-            className="block text-center mt-6 text-blue-600 hover:underline font-medium"
+            className="download-link"
           >
             Download Processed File
           </a>
